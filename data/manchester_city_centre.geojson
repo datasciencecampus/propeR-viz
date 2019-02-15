@@ -1,0 +1,15 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -2.244644,53.48396 ]
+      },
+      "properties": {
+        "name": "Manchester City Centre"
+      }
+    }
+  ]
+}
