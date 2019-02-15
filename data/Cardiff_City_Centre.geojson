@@ -1,0 +1,18 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cardiff City Centre",
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.171759,
+          51.47891
+        ]
+      }
+    }
+  ]
+}

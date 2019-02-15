@@ -1,0 +1,27 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -3.027217,51.56632 ]
+      },
+      "properties": {
+        "name": "Office for National Statistics",
+        "journey": "start"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -3.171759,51.47891 ]
+      },
+      "properties": {
+        "name": "Cardiff City Centre",
+        "journey": "end"
+      }
+    }
+  ]
+}

@@ -1,0 +1,772 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.4195,52.88765 ]
+    },
+    "properties": {
+    "name":9013,
+    "jobcentre_office":"Pwllheli",
+    "office_address":"Lower Cardiff Road, Pwllheli  ",
+    "postcode":"LL535BY"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.38899,51.94337 ]
+    },
+    "properties": {
+    "name":9501,
+    "jobcentre_office":"Brecon",
+    "office_address":"Canal Bank, Brecon  ",
+    "postcode":"LD37HL"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.7826,51.59568 ]
+    },
+    "properties": {
+    "name":9503,
+    "jobcentre_office":"Port Talbot",
+    "office_address":"64-66 Station Road, Port Talbot, West Glamorgan ",
+    "postcode":"SA131LX"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.20846,51.48201 ]
+    },
+    "properties": {
+    "name":9504,
+    "jobcentre_office":"Cardiff Alexandra House",
+    "office_address":"Cowbridge Rd East, Canton, Cardiff ",
+    "postcode":"CF51WU"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.98658,51.79026 ]
+    },
+    "properties": {
+    "name":9510,
+    "jobcentre_office":"Ammanford",
+    "office_address":"Llys Afon, Park Street, Ammanford, Carmarthenshire",
+    "postcode":"SA182NT"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.30795,51.85816 ]
+    },
+    "properties": {
+    "name":9512,
+    "jobcentre_office":"Carmarthen",
+    "office_address":"John Street, Carmarthen  ",
+    "postcode":"SA311QT"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.16251,51.68183 ]
+    },
+    "properties": {
+    "name":9516,
+    "jobcentre_office":"Llanelli",
+    "office_address":"58 Stepney Street, Llanelli, Carmarthenshire ",
+    "postcode":"SA153TN"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.039,51.66829 ]
+    },
+    "properties": {
+    "name":9532,
+    "jobcentre_office":"Gorseinon",
+    "office_address":"42-44 Lime Street, Gorseinon  ",
+    "postcode":"SA44EH"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.92405,51.66617 ]
+    },
+    "properties": {
+    "name":9536,
+    "jobcentre_office":"Morriston",
+    "office_address":"Clase Road, Morriston, West Glamorgan ",
+    "postcode":"SA68BT"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.7033,51.47678 ]
+    },
+    "properties": {
+    "name":9549,
+    "jobcentre_office":"Porthcawl",
+    "office_address":"Dock Street, Porthcawl, Mid Glamorgan ",
+    "postcode":"CF363BL"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.0227,51.82175 ]
+    },
+    "properties": {
+    "name":9570,
+    "jobcentre_office":"Abergavenny",
+    "office_address":"Newbridge House, Tudor Street, Abergavenny ",
+    "postcode":"NP75EF"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -2.75447,51.58949 ]
+    },
+    "properties": {
+    "name":9571,
+    "jobcentre_office":"Caldicot",
+    "office_address":"66 Newport Road, Caldicot, Gwent ",
+    "postcode":"NP264BR"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -2.67191,51.64055 ]
+    },
+    "properties": {
+    "name":9576,
+    "jobcentre_office":"Chepstow",
+    "office_address":"Station Road, Chepstow, Gwent ",
+    "postcode":"NP165UL"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.96704,51.80087 ]
+    },
+    "properties": {
+    "name":9591,
+    "jobcentre_office":"Haverfordwest",
+    "office_address":"16-20 Quay Street, Haverfordwest  ",
+    "postcode":"SA611BH"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -5.04363,51.71509 ]
+    },
+    "properties": {
+    "name":9592,
+    "jobcentre_office":"Milford Haven",
+    "office_address":"Suite 4A, Cedar Court, Havens Head Business Park, Milford Haven, Pembrokeshire",
+    "postcode":"SA733LS"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.35092,53.40696 ]
+    },
+    "properties": {
+    "name":9600,
+    "jobcentre_office":"Amlwch",
+    "office_address":"Unit 2, Site 9, Amlwch Business Park, Amlwch, Ynys Mon",
+    "postcode":"LL689BQ"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.63453,53.31513 ]
+    },
+    "properties": {
+    "name":9602,
+    "jobcentre_office":"Holyhead",
+    "office_address":"The Old Vicarage, Newry Street, Holyhead, Anglesey",
+    "postcode":"LL651DB"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.30801,53.25512 ]
+    },
+    "properties": {
+    "name":9603,
+    "jobcentre_office":"Llangefni",
+    "office_address":"Government Buildings, Bridge Street, Llangefni, YNYS MON",
+    "postcode":"LL777YJ"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.12242,53.22854 ]
+    },
+    "properties": {
+    "name":9610,
+    "jobcentre_office":"Bangor",
+    "office_address":"322-330 High Street, Bangor  ",
+    "postcode":"LL571YA"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.27286,53.14098 ]
+    },
+    "properties": {
+    "name":9612,
+    "jobcentre_office":"Caernarfon",
+    "office_address":"Government Building, Penrallt, Caernarfon, Gwynedd",
+    "postcode":"LL552HN"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.83179,53.32402 ]
+    },
+    "properties": {
+    "name":9615,
+    "jobcentre_office":"Llandudno",
+    "office_address":"29-31 Chapel Street, Llandudno  ",
+    "postcode":"LL302SS"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.88066,52.74254 ]
+    },
+    "properties": {
+    "name":9618,
+    "jobcentre_office":"Dolgellau",
+    "office_address":"Government Building, Arran Road, Dolgellau, Gwynedd",
+    "postcode":"LL401BP"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.13328,52.92816 ]
+    },
+    "properties": {
+    "name":9618,
+    "jobcentre_office":"Porthmadog",
+    "office_address":"High Street, Porthmadog, Gwynedd ",
+    "postcode":"LL499LS"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.08152,52.41463 ]
+    },
+    "properties": {
+    "name":9630,
+    "jobcentre_office":"Aberystwyth",
+    "office_address":"Alexandra Road, Aberystwyth, Dyfed ",
+    "postcode":"SY231LA"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.6584,52.08554 ]
+    },
+    "properties": {
+    "name":9631,
+    "jobcentre_office":"Cardigan",
+    "office_address":"Crown Buildings, Napier St, Cardigan ",
+    "postcode":"SA431EF"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.73294,53.29841 ]
+    },
+    "properties": {
+    "name":9643,
+    "jobcentre_office":"Colwyn",
+    "office_address":"Princess Park 2, Princess Drive, Colwyn Bay  ",
+    "postcode":"LL298PL"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.13605,53.24817 ]
+    },
+    "properties": {
+    "name":9661,
+    "jobcentre_office":"Flint",
+    "office_address":"Flintshire Connects, Chapel Street, Flint ",
+    "postcode":"CH65BD"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.13594,53.17001 ]
+    },
+    "properties": {
+    "name":9663,
+    "jobcentre_office":"Mold",
+    "office_address":"St David'S Lane, Mold, Flintshire ",
+    "postcode":"CH71LH"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.48934,53.31984 ]
+    },
+    "properties": {
+    "name":9664,
+    "jobcentre_office":"Rhyl",
+    "office_address":"80 High Street, Rhyl, Denbighshire, DENBIGHSHIRE",
+    "postcode":"LL181UU"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.04864,53.21385 ]
+    },
+    "properties": {
+    "name":9665,
+    "jobcentre_office":"Shotton",
+    "office_address":"Civic Centre Complex, Wepre Drive, Connahs Quay ",
+    "postcode":"CH54HA"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -2.99704,53.04942 ]
+    },
+    "properties": {
+    "name":9673,
+    "jobcentre_office":"Wrexham",
+    "office_address":"15 - 17 Grosvenor Road, Wrexham  ",
+    "postcode":"LL111BW"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.77443,51.76664 ]
+    },
+    "properties": {
+    "name":9679,
+    "jobcentre_office":"Ystradgynlais",
+    "office_address":"Wind Road, Ystradgynlais, Swansea ",
+    "postcode":"SA91AB"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.85158,52.59074 ]
+    },
+    "properties": {
+    "name":9681,
+    "jobcentre_office":"Machynlleth",
+    "office_address":"43-45 Maengwyn Street, Machynlleth, Powys ",
+    "postcode":"SY208EB"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.31861,52.51361 ]
+    },
+    "properties": {
+    "name":9682,
+    "jobcentre_office":"Newtown",
+    "office_address":"Afon House, The Park, Newtown, Powys",
+    "postcode":"SY162PZ"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.14445,52.65806 ]
+    },
+    "properties": {
+    "name":9683,
+    "jobcentre_office":"Welshpool",
+    "office_address":"New Dolanog House, Severn Road, Welshpool,  ",
+    "postcode":"SY217AP"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.37686,52.23844 ]
+    },
+    "properties": {
+    "name":9691,
+    "jobcentre_office":"Llandrindod Wells",
+    "office_address":"Automobile Palace, Princes Avenue, Llandrindod Wells, Powys",
+    "postcode":"LD15HU"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.44931,51.71338 ]
+    },
+    "properties": {
+    "name":9820,
+    "jobcentre_office":"Aberdare",
+    "office_address":"Crown Buildings, Greenbach, Aberdare ",
+    "postcode":"CF447HU"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.22888,51.6888 ]
+    },
+    "properties": {
+    "name":9822,
+    "jobcentre_office":"Bargoed",
+    "office_address":"Units 3&4, Lowry Plaza, Hanbury Road, Bargoed ",
+    "postcode":"CF818QT"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.27127,51.4046 ]
+    },
+    "properties": {
+    "name":9823,
+    "jobcentre_office":"Barry",
+    "office_address":"9 Holton Road, Barry, Vale of Glamorgan ",
+    "postcode":"CF634HA"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.578789,51.507432 ]
+    },
+    "properties": {
+    "name":9824,
+    "jobcentre_office":"Bridgend",
+    "office_address":"Market Street, Bridgend  ",
+    "postcode":"CF311LL"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.2173,51.5776 ]
+    },
+    "properties": {
+    "name":9826,
+    "jobcentre_office":"Caerphilly",
+    "office_address":"Castle Street, Caerphilly, Mid Glam ",
+    "postcode":"CF831UA"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.173525,51.480889 ]
+    },
+    "properties": {
+    "name":9828,
+    "jobcentre_office":"Cardiff Charles Street",
+    "office_address":"64 Charles St, Cardiff, S Wales ",
+    "postcode":"CF102GS"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.65933,51.60819 ]
+    },
+    "properties": {
+    "name":9834,
+    "jobcentre_office":"Maesteg",
+    "office_address":"12-16 Commercial Street, Maesteg, Mid Glamorgan ",
+    "postcode":"CF349DF"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.38219,51.74855 ]
+    },
+    "properties": {
+    "name":9835,
+    "jobcentre_office":"Merthyr Tydfil",
+    "office_address":"Ty Bethesda, Avenue De Clichy, Merthyr Tydfil, Mid Glamorgan",
+    "postcode":"CF478AS"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.40586,51.61102 ]
+    },
+    "properties": {
+    "name":9838,
+    "jobcentre_office":"Porth",
+    "office_address":"35 Hannah Street, Porth  ",
+    "postcode":"CF399RB"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.80588,51.66218 ]
+    },
+    "properties": {
+    "name":9839,
+    "jobcentre_office":"Neath",
+    "office_address":"1 Windsor Road, Neath, West Glamorgan ",
+    "postcode":"SA111LY"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.17337,51.43412 ]
+    },
+    "properties": {
+    "name":9841,
+    "jobcentre_office":"Penarth",
+    "office_address":"Charnwood House, Plymouth Road, Penarth ",
+    "postcode":"CF643DA"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.38483,51.53813 ]
+    },
+    "properties": {
+    "name":9845,
+    "jobcentre_office":"Llantrisant",
+    "office_address":"17  Ely Valley Road, Talbot Green, Pontyclun, Mid Glamorgan",
+    "postcode":"CF728AL"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.33957,51.59904 ]
+    },
+    "properties": {
+    "name":9847,
+    "jobcentre_office":"Pontypridd",
+    "office_address":"Broadway, Pontypridd, Mid Glam ",
+    "postcode":"CF374SP"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.94244,51.62381 ]
+    },
+    "properties": {
+    "name":9854,
+    "jobcentre_office":"Swansea",
+    "office_address":"37-38 High Street, Swansea  ",
+    "postcode":"SA11LS"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.45758,51.62614 ]
+    },
+    "properties": {
+    "name":9855,
+    "jobcentre_office":"Tonypandy",
+    "office_address":"Thistle House, Tonypandy, Mid Glamorgan,  ",
+    "postcode":"CF402EP"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.51319,51.66423 ]
+    },
+    "properties": {
+    "name":9858,
+    "jobcentre_office":"Treorchy",
+    "office_address":"Oldway House, Bute Street, Treorchy ",
+    "postcode":"CF426TE"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.13636,51.73267 ]
+    },
+    "properties": {
+    "name":9871,
+    "jobcentre_office":"Abertillery",
+    "office_address":"Portland Street, Abertillery  ",
+    "postcode":"NP131YG"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.19574,51.67159 ]
+    },
+    "properties": {
+    "name":9872,
+    "jobcentre_office":"Blackwood",
+    "office_address":"Vision House, High Street, Blackwood, Gwent",
+    "postcode":"NP121BE"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.20944,51.78564 ]
+    },
+    "properties": {
+    "name":9877,
+    "jobcentre_office":"Ebbw Vale",
+    "office_address":"Ty Gantre, Civic Centre, Ebbw Vale, Gwent",
+    "postcode":"NP236XG"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -2.9953,51.58542 ]
+    },
+    "properties": {
+    "name":9880,
+    "jobcentre_office":"Newport Gwent",
+    "office_address":"2-6 Charles Street, Newport, Gwent ",
+    "postcode":"NP201JR"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.0205,51.65391 ]
+    },
+    "properties": {
+    "name":9882,
+    "jobcentre_office":"Cwmbran",
+    "office_address":"42 Gwent Square, Cwmbran, Gwent",
+    "postcode":"NP441PL"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.04109,51.70467 ]
+    },
+    "properties": {
+    "name":9883,
+    "jobcentre_office":"Pontypool",
+    "office_address":"Park Road, Gwent  ",
+    "postcode":"NP46XQ"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.94072,51.69426 ]
+    },
+    "properties": {
+    "name":9894,
+    "jobcentre_office":"Pembroke Dock",
+    "office_address":"Gordon Street, Pembroke Dock  ",
+    "postcode":"SA726EP"
+    }
+  }
+]
+}

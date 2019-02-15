@@ -1,0 +1,115 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.1836,51.4797 ]
+    },
+    "properties": {
+    "name": "Cardiff Arms Park",
+    "capacity": 12500
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.203,51.4728 ]
+    },
+    "properties": {
+      "name": "Cardiff City Stadium",
+      "capacity": 33316
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.022,51.6431 ]
+    },
+    "properties": {
+      "name": "Cwmbran Stadium",
+      "capacity": 10500
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.9346,51.6427 ]
+    },
+    "properties": {
+      "name": "Liberty Stadium",
+      "capacity": 21088
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -4.1282,51.6784 ]
+    },
+    "properties": {
+      "name": "Parc y Scarlets",
+      "capacity": 14870
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.3778,51.7511 ]
+    },
+    "properties": {
+      "name": "Penydarren Park",
+      "capacity": 10000
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.182,51.4782 ]
+    },
+    "properties": {
+      "name": "Principality Stadium",
+      "capacity": 74500
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.0037,53.0519 ]
+    },
+    "properties": {
+      "name": "Racecourse Ground",
+      "capacity": 15500
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -2.987,51.5883 ]
+    },
+    "properties": {
+      "name": "Rodney Parade",
+      "capacity": 11676
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -3.1914,51.486 ]
+    },
+    "properties": {
+      "name": "SWALEC Stadium",
+      "capacity": 15643
+    }
+  }
+]
+}
