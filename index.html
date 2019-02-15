@@ -1,13 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-  <title>Simple polygon visualisation</title>
+  <title>propeR visualisation tool</title>
   <meta charset="utf-8" />
+
+  <style>
+		body {
+			margin: 0px;
+		}
+		a {
+			color: #3388ff;
+		}
+		#map {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			background-color: #333;
+		}
+	</style>
+
+</head>
+<body>
+
+  <div id="map"></div>
 
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-
 
   <!--wind-js-leaflet-->
   <link rel="stylesheet" href="css/L.Icon.FontAwesome.css" />
@@ -16,9 +35,7 @@
   <style>
   @import url(http://cdn.leafletjs.com/leaflet-0.6.1/leaflet.css);
   </style>
-</head>
-<body>
-  <div id="map" style="width: 100%; height: 800px"></div>
+
   <script>
 
   var data_attrib = " | Data: <a href='http://www.openstreetmap.org/'>&copy; OpenStreetMap </a>contributers | <a href='http://d3js.org/'>D3.js</a>"
@@ -29,18 +46,17 @@
   var CartoDB_DarkMatter = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
   	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
   	subdomains: 'abcd',
-  	maxZoom: 19
-  });
+  	maxZoom: 19});
   var CartoDB_LightMatter = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: 'abcd',
-    maxZoom: 19
-  });
+    maxZoom: 19});
 
-  var baseMaps = {    "CartoDB Light Matter": CartoDB_LightMatter,
-  "CartoDB Dark Matter": CartoDB_DarkMatter,
-  "OpenStreetMap": osm,
-  "OpenStreetMap (B&W)": osm_bw
+  var baseMaps = {
+    "CartoDB Light Matter": CartoDB_LightMatter,
+    "CartoDB Dark Matter": CartoDB_DarkMatter,
+    "OpenStreetMap": osm,
+    "OpenStreetMap (B&W)": osm_bw
   };
 
   var lsoa_points = L.layerGroup();
@@ -87,16 +103,19 @@
   d3.json("data/LSOA.geojson", function(error, json) {
     json.features.map(function(point,i){
       if(point.geometry.type=='Point')
-       lsoa_point = new L.circle(mapPoint(point.geometry.coordinates),
-                                  radius = 500,
-                                  {color: 'black',
-                                  fillColor: 'white',
-                                  weight:'0.5px',
-                                  fillOpacity:'1'})
-                                  .bindPopup("<b>LSOA name: </b>" + point.properties.lsoa11nm + "<br>"
-                                              + "<b>LSOA cd: </b>" + point.properties.lsoa11cd + "<br>"
-                                              + "<b>LSOA id: </b>" + point.properties.objectid + "<br>"
-                                              + "<b>Population: </b>" + point.properties.population);
+      lsoa_point = new L.circle(mapPoint(point.geometry.coordinates),
+        radius = 500,
+        {
+          color: 'black',
+          fillColor: 'white',
+          weight:'0.5px',
+          fillOpacity:'1'
+        })
+        .bindPopup("<b>LSOA name: </b>" + point.properties.lsoa11nm + "<br>"
+          + "<b>LSOA cd: </b>" + point.properties.lsoa11cd + "<br>"
+          + "<b>LSOA id: </b>" + point.properties.objectid + "<br>"
+          + "<b>Population: </b>" + point.properties.population);
+
       lsoa_point.addTo(lsoa_points)
     })
   });
@@ -105,11 +124,13 @@
     json.features.map(function(point,i){
       if(point.geometry.type=='Point')
        jc_point = new L.marker(mapPoint(point.geometry.coordinates),
-                                {icon: jobCentreMarker
-                                })
-                                .bindPopup("<b>Job Centre name: </b>" + point.properties.jobcentre_office + "<br>"
-                                            + "<b>ID: </b>" + point.properties.id  + "<br>"
-                                            + "<b>Address: </b>" + point.properties.office_address + ", " + point.properties.postcode + "<br>");
+        {
+          icon: jobCentreMarker
+        })
+        .bindPopup("<b>Job Centre name: </b>" + point.properties.jobcentre_office + "<br>"
+          + "<b>ID: </b>" + point.properties.id  + "<br>"
+          + "<b>Address: </b>" + point.properties.office_address + ", " + point.properties.postcode + "<br>");
+
       jc_point.addTo(jc_points)
     })
   });
@@ -117,19 +138,22 @@
   d3.json("data/job_centre_poly.geojson", function(error, json) {
     json.features.map(function(poly,i){
       if(poly.geometry.type=='MultiPolygon')
-        jc_polygon = new L.multiPolygon(poly.geometry.coordinates.map(function(d){return mapPolygon(d)}), {
-                                color: '#006c84',
-                                weight:'0px',
-                                fillOpacity:'0.5'
-                                })
-                                .bindPopup(poly.properties.name);
+        jc_polygon = new L.multiPolygon(poly.geometry.coordinates.map(function(d){return mapPolygon(d)}),
+          {
+            color: '#006c84',
+            weight:'0px',
+            fillOpacity:'0.5'
+          })
+          .bindPopup(poly.properties.name);
       else if(poly.geometry.type=='Polygon')
-        jc_polygon = new L.polygon(mapPolygon(poly.geometry.coordinates), {
-                                color: '#006c84',
-                                weight:'2px',
-                                fillOpacity:'0.5'
-                                })
-                                .bindPopup(poly.properties.name);
+        jc_polygon = new L.polygon(mapPolygon(poly.geometry.coordinates),
+          {
+            color: '#006c84',
+            weight:'2px',
+            fillOpacity:'0.5'
+          })
+          .bindPopup(poly.properties.name);
+
       jc_polygon.addTo(jc_polygons)
     })
   });
@@ -138,30 +162,35 @@
     json.features.map(function(point,i){
       if(point.geometry.type=='Point')
        sports_stadium = new L.marker(mapPoint(point.geometry.coordinates),
-                                {icon: sportsStadiumMarker
-                                })
-                                .bindPopup("<b>Sports Stadium name: </b>" + point.properties.name + "<br>"
-                                            + "<b>Capacity: </b>" + point.properties.capacity);
+        {
+          icon: sportsStadiumMarker
+          })
+          .bindPopup("<b>Sports Stadium name: </b>" + point.properties.name + "<br>"
+            + "<b>Capacity: </b>" + point.properties.capacity);
+
       sports_stadium.addTo(sports_stadiums)
     })
   });
 
-  d3.json("data/sports_stadiums_poly.geojson", function(error, json) {
+  d3.json("sports_stadiums_poly.geojson", function(error, json) {
     json.features.map(function(poly,i){
       if(poly.geometry.type=='MultiPolygon')
-        sports_stadium_polygon = new L.multiPolygon(poly.geometry.coordinates.map(function(d){return mapPolygon(d)}), {
-                                color: '#007a72',
-                                weight:'0px',
-                                fillOpacity:'0.5'
-                                })
-                                .bindPopup(poly.properties.name);
+        sports_stadium_polygon = new L.multiPolygon(poly.geometry.coordinates.map(function(d){return mapPolygon(d)}),
+        {
+          color: '#007a72',
+          weight:'0px',
+          fillOpacity:'0.5'
+        })
+        .bindPopup(poly.properties.name);
       else if(poly.geometry.type=='Polygon')
-        sports_stadium_polygon = new L.polygon(mapPolygon(poly.geometry.coordinates), {
-                                color: '#007a72',
-                                weight:'2px',
-                                fillOpacity:'0.5'
-                                })
-                                .bindPopup(poly.properties.name);
+        sports_stadium_polygon = new L.polygon(mapPolygon(poly.geometry.coordinates),
+          {
+            color: '#007a72',
+            weight:'2px',
+            fillOpacity:'0.5'
+          })
+          .bindPopup(poly.properties.name);
+
       sports_stadium_polygon.addTo(sports_stadiums_polygons)
     })
   });
@@ -169,15 +198,18 @@
   d3.json("data/markers.geojson", function(error, json) {
     json.features.map(function(point,i){
       if (point.properties.journey=='start')
-        marker = new L.marker(mapPoint(point.geometry.coordinates), {
-                              icon: originMarker
-                              })
-                              .bindPopup(point.properties.name);
+        marker = new L.marker(mapPoint(point.geometry.coordinates),
+          {
+            icon: originMarker
+          })
+        .bindPopup(point.properties.name);
       else if (point.properties.journey=='end')
-        marker = new L.marker(mapPoint(point.geometry.coordinates), {
-                              icon: destinationMarker
-                              })
-                              .bindPopup(point.properties.name);
+        marker = new L.marker(mapPoint(point.geometry.coordinates),
+          {
+            icon: destinationMarker
+          })
+          .bindPopup(point.properties.name);
+
       marker.addTo(ons_to_cardiff_markers)
     })
   });
@@ -185,14 +217,16 @@
   d3.json("data/journey.geojson", function(error, json) {
     json.features.map(function(line,i){
       journey = new L.polyline(mapLineString(line.geometry.coordinates),
-                                {
-                                  color: getLineColor(line.properties.mode),
-                                  opacity: 1})
-                                  .bindPopup("<b>Mode: </b>" + line.properties.mode + "<br>"
-                                  + "<b>Route: </b>" + line.properties.route + "<br>"
-                                  + "<b>Agency: </b>" + line.properties.agencyName + "<br>"
-                                  + "<b>Distance: </b>" + (line.properties.distance/1000).toFixed(2) + " km" + "<br>"
-                                  + "<b>Duration: </b>" + (line.properties.duration/60).toFixed(2) + " mins");;
+        {
+          color: getLineColor(line.properties.mode),
+          opacity: 1
+        })
+        .bindPopup("<b>Mode: </b>" + line.properties.mode + "<br>"
+          + "<b>Route: </b>" + line.properties.route + "<br>"
+          + "<b>Agency: </b>" + line.properties.agencyName + "<br>"
+          + "<b>Distance: </b>" + (line.properties.distance/1000).toFixed(2) + " km" + "<br>"
+          + "<b>Duration: </b>" + (line.properties.duration/60).toFixed(2) + " mins");;
+
       journey.addTo(ons_to_cardiff_journey)
     })
   });
@@ -225,7 +259,7 @@
   }
 
   function getLineColor(x) {
-    return x == 'TRANSIT'     ?    '#000000':
+    return x == 'TRANSIT'    ?    '#000000':
            x == 'WALK'     ?   '#A14296':
            x == 'BUS'     ?   '#48C1B1':
            x == 'RAIL'     ?   '#4D7BC5':
@@ -235,5 +269,6 @@
   };
 
 </script>
- </body>
+
+</body>
 </html>
