@@ -18,30 +18,6 @@
 			background-color: #333;
 		}
 
-    .leaflet-fa-markers {
-        position: absolute;
-        left: 0;
-        top: 0;
-        display: block;
-        text-align: center;
-        margin-left: -15px;
-        margin-top: -50px;
-        width: 30px;
-        height: 50px;
-    }
-
-    .leaflet-fa-markers .marker-icon-svg {
-        position: absolute;
-    }
-
-    .leaflet-fa-markers .feature-icon {
-        position: absolute;
-        font-size: 20px;
-        line-height: 0px;
-        left: 8px;
-        top: 16px;
-        display: inline-block;
-    }
 	</style>
 
 </head>
@@ -55,8 +31,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
   <!--wind-js-leaflet-->
-  <script src="js/L.Icon.FontAwesome.js"></script>
-
 
   <script>
 
@@ -92,34 +66,22 @@
   var ons_to_cardiff_journey = L.layerGroup();
   var ons_to_cardiff = L.layerGroup([ons_to_cardiff_markers, ons_to_cardiff_journey]);
 
-  var originMarker = L.icon.fontAwesome({
-    iconClasses: 'fa fa-circle-o-notch fa-spin fa-lg',
-    markerColor: '#d10000',
-    iconColor: '#FFF',
-    iconXOffset: -2,
-    iconYOffset: 0
+  var originMarker = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
   });
 
-  var destinationMarker = L.icon.fontAwesome({
-    iconClasses: '',
-    markerColor: '#00a9ce',
-    iconColor: '#FFF'
-  });
-
-  var jobCentreMarker = L.icon.fontAwesome({
-    iconClasses: 'fa fa-building',
-    markerColor: '#00a9ce',
-    iconColor: '#FFF',
-    iconXOffset: 0,
-    iconYOffset: 1
-  });
-
-  var sportsStadiumMarker = L.icon.fontAwesome({
-    iconClasses: 'fa fa-futbol-o',
-    markerColor: '#00c6b9',
-    iconColor: '#FFF',
-    iconXOffset: -2,
-    iconYOffset: 1
+  var destinationMarker = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
   });
 
   d3.json("data/LSOA.geojson", function(error, json) {
@@ -147,7 +109,7 @@
       if(point.geometry.type=='Point')
        jc_point = new L.marker(mapPoint(point.geometry.coordinates),
         {
-          icon: jobCentreMarker
+          icon: originMarker
         })
         .bindPopup("<b>Job Centre name: </b>" + point.properties.jobcentre_office + "<br>"
           + "<b>ID: </b>" + point.properties.id  + "<br>"
@@ -185,7 +147,7 @@
       if(point.geometry.type=='Point')
        sports_stadium = new L.marker(mapPoint(point.geometry.coordinates),
         {
-          icon: sportsStadiumMarker
+          icon: originMarker
           })
           .bindPopup("<b>Sports Stadium name: </b>" + point.properties.name + "<br>"
             + "<b>Capacity: </b>" + point.properties.capacity);
@@ -262,8 +224,8 @@
   var overlayMaps = {
     "LSOAs": lsoa_points,
     "Job Centres": job_centres,
-    "ONS to Cardiff": ons_to_cardiff,
-    "Sports Stadiums": sports
+    "Sports Stadiums": sports,
+    "ONS to Cardiff": ons_to_cardiff
   };
 
   L.control.layers(baseMaps, overlayMaps).addTo(map);
