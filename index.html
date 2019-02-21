@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="css/corner_ribbons.css">
+  <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 
   <style>
@@ -59,6 +60,7 @@
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.js"></script>
+    <script type='text/javascript' src="js/L.Control.Layers.Tree.js"></script>
 
     <!-- <script src="js/leaflet.select-layers.min.js"></script> -->
 
@@ -78,12 +80,7 @@
       subdomains: 'abcd',
       maxZoom: 19});
 
-    var baseLayers = {
-      "CartoDB Light Matter": CartoDB_LightMatter,
-      "CartoDB Dark Matter": CartoDB_DarkMatter,
-      "OpenStreetMap": osm,
-      "OpenStreetMap (B&W)": osm_bw
-    };
+
 
     lsoa_wales_points = new L.GeoJSON.AJAX("data/LSOA_Wales.geojson", {
       pointToLayer: function (feature, latlng) {
@@ -203,6 +200,13 @@
           layers: [CartoDB_LightMatter]
         });
 
+        var baseLayers = {
+          "CartoDB Light Matter": CartoDB_LightMatter,
+          "CartoDB Dark Matter": CartoDB_DarkMatter,
+          "OpenStreetMap": osm,
+          "OpenStreetMap (B&W)": osm_bw
+        };
+
         var overlayLayers = {
           "Wales LSOAs": lsoa_wales_points,
           "Wales Job Centres": job_centres,
@@ -214,9 +218,50 @@
           "Manchester (Sat 11th Jan 2am)": manchester3
         };
 
-        var control = L.control.layers(baseLayers, overlayLayers)
-        // console.log(control)
-        control.addTo(map);
+        var baseTree = {
+            label: 'Base Layers',
+            children: [
+                      { label: 'CartoDB Light Matter', layer: CartoDB_LightMatter },
+                      { label: 'CartoDB Dark Matter', layer: CartoDB_DarkMatter },
+                      { label: 'OpenStreetMap', layer: osm },
+                      { label: 'OpenStreetMap (B&W)', layer: osm_bw },
+                        /* ... */
+                      ]
+                    }
+
+          var overlayTree = {
+              label: 'Overlay Layers',
+              children: [
+                  {
+                    label: 'Wales',
+                      children: [
+                        { label: 'LSOAs', layer: lsoa_wales_points },
+                        { label: 'Job Centres', layer: job_centres },
+                        { label: 'Sports Stadiums', layer: sports },
+                        { label: 'ONS to Cardiff', layer: ons_to_cardiff },
+                        /* ... */
+                      ]
+                    },
+                    {
+                      label: 'Manchester',
+                        children: [
+                          { label: 'LSOAs', layer: lsoa_manchester_points },
+                          { label: 'NTE (Fri 11th Jan 6pm)', layer: manchester1 },
+                          { label: 'NTE (Fri 11th Jan 10pm)', layer: manchester2 },
+                          { label: 'NTE (Sat 12th Jan 2am)', layer: manchester3 },
+                          /* ... */
+                        ]
+                      }
+                    ]
+                }
+
+        var control = L.control.layers.tree(baseTree, null,
+        {
+          collapsed: true,
+        })
+
+        control.addTo(map).collapseTree().expandSelected(true);
+        control.setOverlayTree(overlayTree).collapseTree(true).expandSelected(true);
 
         function mapPoint(point){
           return [point[1],point[0]]
