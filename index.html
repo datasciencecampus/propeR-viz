@@ -4,352 +4,299 @@
   <title>propeR visualisation tool</title>
   <meta charset="utf-8" />
 
-  <script src="https://d3js.org/d3.v3.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="css/corner_ribbons.css">
 
   <style>
 
   footer {
-      position: fixed;
-      padding-left: 20px;
-      padding-top: 5px;
-      padding-right: 5px;
-      padding-bottom: 5px;
-      height: 10%;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      background: white;
-      font-family: "Palatino";
-      color: #333;
-      text-align: right;
+    position: fixed;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    height: 10%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: white;
+    font-family: "Palatino";
+    color: #333;
+    text-align: right;
   }
 
-	#map {
-		position: absolute;
-		height: 90%;
-		width: 100%;
-		background-color: white;
-	}
+  #map {
+    position: absolute;
+    height: 90%;
+    width: 100%;
+    background-color: white;
+  }
 
   .text {
-      display: inline-block;
-      vertical-align: middle; /* or top or bottom */
+    display: inline-block;
+    vertical-align: middle; /* or top or bottom */
   }
 
   #footerimg {
-      display: inline-block;
-      vertical-align: middle;
-      height: 100%;
-      padding-left: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    padding-left: 20px;
   }
-	</style>
+
+  </style>
 
 </head>
 <body>
 
   <div class="container">
-  <div id="map"></div>
-  <div class="corner-ribbon top-left sticky red shadow"><a href="https://github.com/datasciencecampus/access-to-services/tree/develop/propeR" style="color: white; text-decoration:none">propeR Demo</a></div>
+    <div class="corner-ribbon top-left sticky red shadow"><a href="https://github.com/datasciencecampus/access-to-services/tree/develop/propeR" style="color: white; text-decoration:none">propeR Demo</a></div>
+    <div id="map"></div>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.js"></script>
 
-  <script>
+    <!-- <script src="js/leaflet.select-layers.min.js"></script> -->
 
-  var data_attrib = " | Data: <a href='http://www.openstreetmap.org/'>&copy; OpenStreetMap </a>contributers | <a href='http://d3js.org/'>D3.js</a>"
-  var osm_bw = L.tileLayer('https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
-  	attribution: "Map: <a href='https://www.openstreetmap.org/copyright'>&copy; OpenStreetMap</a>" + data_attrib});
-  var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: "Map: <a href='http://www.openstreetmap.org/'>&copy; OpenStreetMap </a>contributers" + data_attrib});
-  var CartoDB_DarkMatter = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-  	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-  	subdomains: 'abcd',
-  	maxZoom: 19});
-  var CartoDB_LightMatter = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 19});
+    <script>
 
-  var baseMaps = {
-    "CartoDB Light Matter": CartoDB_LightMatter,
-    "CartoDB Dark Matter": CartoDB_DarkMatter,
-    "OpenStreetMap": osm,
-    "OpenStreetMap (B&W)": osm_bw
-  };
+    var data_attrib = " | Data: <a href='http://www.openstreetmap.org/'>&copy; OpenStreetMap </a>contributers | <a href='http://d3js.org/'>D3.js</a>"
+    var osm_bw = L.tileLayer('https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
+      attribution: "Map: <a href='https://www.openstreetmap.org/copyright'>&copy; OpenStreetMap</a>" + data_attrib});
+    var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: "Map: <a href='http://www.openstreetmap.org/'>&copy; OpenStreetMap </a>contributers" + data_attrib});
+    var CartoDB_DarkMatter = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19});
+    var CartoDB_LightMatter = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19});
 
-  var lsoa_wales_points = L.layerGroup();
-  var lsoa_manchester_points = L.layerGroup();
-  var jc_points = L.layerGroup();
-  var jc_polygons = L.layerGroup();
-  var job_centres = L.layerGroup([jc_polygons, jc_points]);
-  var sports_stadiums = L.layerGroup();
-  var sports_stadiums_polygons = L.layerGroup();
-  var sports = L.layerGroup([sports_stadiums_polygons, sports_stadiums]);
-  var ons_to_cardiff_markers = L.layerGroup();
-  var ons_to_cardiff_journey = L.layerGroup();
-  var ons_to_cardiff = L.layerGroup([ons_to_cardiff_markers, ons_to_cardiff_journey]);
-  var manchester_points = L.layerGroup();
-  var manchester_polygons = L.layerGroup();
-  var manchester = L.layerGroup([manchester_polygons, manchester_points]);
+    var baseLayers = {
+      "CartoDB Light Matter": CartoDB_LightMatter,
+      "CartoDB Dark Matter": CartoDB_DarkMatter,
+      "OpenStreetMap": osm,
+      "OpenStreetMap (B&W)": osm_bw
+    };
 
-  var originMarker = new L.Icon({
-  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-  });
-
-  var destinationMarker = new L.Icon({
-  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-  });
-
-  d3.json("data/LSOA_Wales.geojson", function(error, json) {
-    json.features.map(function(point,i){
-      if(point.geometry.type=='Point')
-      lsoa_point = new L.circle(mapPoint(point.geometry.coordinates),
-        radius = 1000,
-        {
-          color: 'black',
-          fillColor: 'white',
-          weight:'1px',
-          fillOpacity:'1'
-        })
-        .bindPopup("<b>LSOA name: </b>" + point.properties.lsoa11nm + "<br>"
-          + "<b>LSOA cd: </b>" + point.properties.lsoa11cd + "<br>"
-          + "<b>LSOA id: </b>" + point.properties.objectid + "<br>"
-          + "<b>Population: </b>" + point.properties.population);
-
-      lsoa_point.addTo(lsoa_wales_points)
-    })
-  });
-
-  d3.json("data/LSOA_GM.geojson", function(error, json) {
-    json.features.map(function(point,i){
-      if(point.geometry.type=='Point')
-      lsoa_point = new L.circle(mapPoint(point.geometry.coordinates),
-        radius = 100,
-        {
-          color: 'black',
-          fillColor: 'white',
-          weight:'1px',
-          fillOpacity:'1'
-        })
-        .bindPopup("<b>LSOA name: </b>" + point.properties.lsoa11nm + "<br>"
-          + "<b>LSOA cd: </b>" + point.properties.lsoa11cd + "<br>"
-          + "<b>LSOA id: </b>" + point.properties.objectid);
-
-      lsoa_point.addTo(lsoa_manchester_points)
-    })
-  });
-
-  d3.json("data/job_centres.geojson", function(error, json) {
-    json.features.map(function(point,i){
-      if(point.geometry.type=='Point')
-       jc_point = new L.marker(mapPoint(point.geometry.coordinates),
-        {
-          icon: originMarker
-        })
-        .bindPopup("<b>Job Centre name: </b>" + point.properties.jobcentre_office + "<br>"
-          + "<b>ID: </b>" + point.properties.id  + "<br>"
-          + "<b>Address: </b>" + point.properties.office_address + ", " + point.properties.postcode + "<br>");
-
-      jc_point.addTo(jc_points)
-    })
-  });
-
-  d3.json("data/job_centre_poly.geojson", function(error, json) {
-    json.features.map(function(poly,i){
-      if(poly.geometry.type=='MultiPolygon')
-        jc_polygon = new L.multiPolygon(poly.geometry.coordinates.map(function(d){return mapPolygon(d)}),
-          {
-            color: '#006c84',
-            weight:'0px',
-            fillOpacity:'0.5'
+    lsoa_wales_points = new L.GeoJSON.AJAX("data/LSOA_Wales.geojson", {
+      pointToLayer: function (feature, latlng) {
+        return L.circle(latlng,
+          radius = 500, {
+            color: 'black',
+            fillColor: 'white',
+            weight:'1',
+            fillOpacity:'1'
           })
-          .bindPopup(poly.properties.name);
-      else if(poly.geometry.type=='Polygon')
-        jc_polygon = new L.polygon(mapPolygon(poly.geometry.coordinates),
-          {
-            color: '#006c84',
-            weight:'2px',
-            fillOpacity:'0.5'
-          })
-          .bindPopup(poly.properties.name);
+        },
+        onEachFeature: lsoaPopUp
+      });
 
-      jc_polygon.addTo(jc_polygons)
-    })
-  });
+      lsoa_manchester_points = new L.GeoJSON.AJAX("data/LSOA_GM.geojson", {
+        pointToLayer: function (feature, latlng) {
+          return L.circle(latlng,
+            radius = 50, {
+              color: 'black',
+              fillColor: 'white',
+              weight:'1',
+              fillOpacity:'1'
+            })
+          },
+          onEachFeature: lsoaPopUp
+        });
 
-  d3.json("data/sports_stadiums.geojson", function(error, json) {
-    json.features.map(function(point,i){
-      if(point.geometry.type=='Point')
-       sports_stadium = new L.marker(mapPoint(point.geometry.coordinates),
-        {
-          icon: originMarker
-          })
-          .bindPopup("<b>Sports Stadium name: </b>" + point.properties.name + "<br>"
-            + "<b>Capacity: </b>" + point.properties.capacity);
-
-      sports_stadium.addTo(sports_stadiums)
-    })
-  });
-
-  d3.json("data/sports_stadiums_poly.geojson", function(error, json) {
-    json.features.map(function(poly,i){
-      if(poly.geometry.type=='MultiPolygon')
-        sports_stadium_polygon = new L.multiPolygon(poly.geometry.coordinates.map(function(d){return mapPolygon(d)}),
-        {
-          color: '#007a72',
-          weight:'0px',
-          fillOpacity:'0.5'
-        })
-        .bindPopup(poly.properties.name);
-      else if(poly.geometry.type=='Polygon')
-        sports_stadium_polygon = new L.polygon(mapPolygon(poly.geometry.coordinates),
-          {
-            color: '#007a72',
-            weight:'2px',
-            fillOpacity:'0.5'
-          })
-          .bindPopup(poly.properties.name);
-
-      sports_stadium_polygon.addTo(sports_stadiums_polygons)
-    })
-  });
-
-  d3.json("data/markers.geojson", function(error, json) {
-    json.features.map(function(point,i){
-      if (point.properties.journey=='start')
-        marker = new L.marker(mapPoint(point.geometry.coordinates),
-          {
-            icon: originMarker
-          })
-        .bindPopup(point.properties.name);
-      else if (point.properties.journey=='end')
-        marker = new L.marker(mapPoint(point.geometry.coordinates),
-          {
-            icon: destinationMarker
-          })
-          .bindPopup(point.properties.name);
-
-      marker.addTo(ons_to_cardiff_markers)
-    })
-  });
-
-  d3.json("data/journey.geojson", function(error, json) {
-    json.features.map(function(line,i){
-      journey = new L.polyline(mapLineString(line.geometry.coordinates),
-        {
-          color: getLineColor(line.properties.mode),
-          opacity: 1
-        })
-        .bindPopup("<b>Mode: </b>" + line.properties.mode + "<br>"
-          + "<b>Route: </b>" + line.properties.route + "<br>"
-          + "<b>Agency: </b>" + line.properties.agencyName + "<br>"
-          + "<b>Distance: </b>" + (line.properties.distance/1000).toFixed(2) + " km" + "<br>"
-          + "<b>Duration: </b>" + (line.properties.duration/60).toFixed(2) + " mins");;
-
-      journey.addTo(ons_to_cardiff_journey)
-    })
-  });
-
-  d3.json("data/manchester_city_centre.geojson", function(error, json) {
-    json.features.map(function(point,i){
-      marker = new L.marker(mapPoint(point.geometry.coordinates),
-        {
-          icon: originMarker
-        })
-        .bindPopup(point.properties.name);
-
-      marker.addTo(manchester_points)
-    })
-  });
-
-  d3.json("data/manchester_journey.geojson", function(error, json) {
-    json.features.map(function(poly,i){
-      if(poly.geometry.type=='MultiPolygon')
-        manchester_polygon = new L.multiPolygon(poly.geometry.coordinates.map(function(d){return mapPolygon(d)}),
-        {
-          color: '#007a72',
-          weight:'0px',
-          fillOpacity:'0.5'
-        })
-        .bindPopup(poly.properties.name);
-      else if(poly.geometry.type=='Polygon')
-        manchester_polygon = new L.polygon(mapPolygon(poly.geometry.coordinates),
-          {
-            color: '#007a72',
-            weight:'2px',
-            fillOpacity:'0.5'
-          })
-          .bindPopup(poly.properties.name);
-
-      manchester_polygon.addTo(manchester_polygons)
-    })
-  });
-
-  var map = L.map('map', {
-    center: [52.5, -4],
-    zoom: 8,
-    layers: [CartoDB_LightMatter]
-  });
-
-  console.log(manchester_points)
-  var overlayMaps = {
-    "LSOAs (Wales)": lsoa_wales_points,
-    "Job Centres (Wales)": job_centres,
-    "Sports Stadiums (Wales)": sports,
-    "ONS-Cardiff Journey": ons_to_cardiff,
-    "LSOAs (Manchester)": lsoa_manchester_points,
-    "Manchester": manchester
-  };
-
-  L.control.layers(baseMaps, overlayMaps).addTo(map);
-
-  function mapPoint(point){
-    return [point[1],point[0]]
-  }
-
-  function mapPolygon(poly){
-    return poly.map(function(line){return mapLineString(line)})
-  }
-
-  function mapLineString(line){
-    return line.map(function(d){return [d[1],d[0]]})
-  }
-
-  function getLineColor(x) {
-    return x == 'TRANSIT'    ?    '#000000':
-           x == 'WALK'     ?   '#A14296':
-           x == 'BUS'     ?   '#48C1B1':
-           x == 'RAIL'     ?   '#4D7BC5':
-           x == 'CAR'     ?   '#E825D6':
-           x == 'BICYCLE'     ?   '#4AA6C3':
-                              '#4AA6C3';
-  };
+        jc_points = new L.GeoJSON.AJAX("data/Wales_job_centre_locations.geojson", {
+          onEachFeature: jobCentrePopUp
+        });
 
 
+        jc_polygons = new L.GeoJSON.AJAX("data/Wales_job_centre_poly.geojson", {
+          style: {
+            "color": '#006c84',
+            "weight": 0,
+            "opacity":0.5
+          },
+          onEachFeature: polyPopUp
+        });
 
-</script>
-</div>
+        sports_stadiums = new L.GeoJSON.AJAX("data/Wales_sports_stadiums.geojson", {
+          onEachFeature: sportsStadiumPopUp
+        });
 
-<footer>
 
-  <div class="text">This is a demonstration of some of the outputs <br> made using <a style="color: #f4427a; text-decoration:none" href="https://github.com/datasciencecampus/access-to-services/tree/develop/propeR">propeR</a>, developed and designed <br> by the <a style="color: #1459c9; text-decoration:none" href="https://datasciencecampus.ons.gov.uk/">Data Science Campus</a></div>
+        sports_stadiums_polygons = new L.GeoJSON.AJAX("data/Wales_sports_stadiums_poly.geojson", {
+          style: {
+            "color": '#007a72',
+            "weight": 0,
+            "opacity":0.5
+          },
+          onEachFeature: polyPopUp
+        });
 
-  <img id="footerimg" src="images/propeR_logo_v1.png" alt="propeR">
-  <img id="footerimg" src="images/data-campus-logo.png" alt="Data Science Campus">
-  <img id="footerimg" src="images/ONS-logo.png" alt="Office for National Statistics">
+        manchester_points = new L.GeoJSON.AJAX("data/manchester_city_centre.geojson", {
+          onEachFeature: originPopUp
+        });
 
-</footer>
+
+        manchester_polygons1 = new L.GeoJSON.AJAX("data/manchester_fri_6pm_poly.geojson", {
+          style: {
+            "color": '#007a72',
+            "weight": 0,
+            "opacity":0.5
+          },
+          onEachFeature: polyPopUp
+        });
+
+        manchester_polygons2 = new L.GeoJSON.AJAX("data/manchester_fri_10pm_poly.geojson", {
+          style: {
+            "color": '#007a45',
+            "weight": 0,
+            "opacity":0.5
+          },
+          onEachFeature: polyPopUp
+        });
+
+        manchester_polygons3 = new L.GeoJSON.AJAX("data/manchester_sat_2am_poly.geojson", {
+          style: {
+            "color": '#65007a',
+            "weight": 0,
+            "opacity":0.5
+          },
+          onEachFeature: polyPopUp
+        });
+
+        ons_to_cardiff_markers = new L.GeoJSON.AJAX("data/Cardiff_and_ONS_markers.geojson", {
+          onEachFeature: originPopUp
+        });
+
+
+        ons_to_cardiff_journey = new L.GeoJSON.AJAX("data/Cardiff_and_ONS_journey.geojson", {
+          style: function(feature) {
+            switch (feature.properties.mode) {
+              case 'TRANSIT': return {color: '#000000'};
+              case 'WALK': return {color: '#A14296'};
+              case 'BUS': return {color: '#48C1B1'};
+              case 'RAIL': return {color: '#4D7BC5'};
+              case 'CAR': return {color: '#E825D6'};
+              case 'CYCLE': return {color: '#4AA6C3'};
+            }
+          },
+          onEachFeature: pointToPointPopup
+        });
+
+        var job_centres = L.layerGroup([jc_polygons, jc_points])
+        var sports = L.layerGroup([sports_stadiums_polygons, sports_stadiums]);
+        var manchester1 = L.layerGroup([manchester_polygons1, manchester_points]);
+        var manchester2 = L.layerGroup([manchester_polygons2, manchester_points]);
+        var manchester3 = L.layerGroup([manchester_polygons3, manchester_points]);
+        var ons_to_cardiff = L.layerGroup([ons_to_cardiff_markers, ons_to_cardiff_journey]);
+
+        var map = L.map('map', {
+          center: [52.5, -4],
+          zoom: 8,
+          layers: [CartoDB_LightMatter]
+        });
+
+        var overlayLayers = {
+          "Wales LSOAs": lsoa_wales_points,
+          "Wales Job Centres": job_centres,
+          "Wales Sports Stadiums": sports,
+          "ONS to Cardiff": ons_to_cardiff,
+          "Manchester LSOAs": lsoa_manchester_points,
+          "Manchester (Fri 11th Jan 6pm)": manchester1,
+          "Manchester (Fri 11th Jan 10pm)": manchester2,
+          "Manchester (Sat 11th Jan 2am)": manchester3
+        };
+
+        var control = L.control.layers(baseLayers, overlayLayers)
+        // console.log(control)
+        control.addTo(map);
+
+        function mapPoint(point){
+          return [point[1],point[0]]
+        }
+
+        function mapPolygon(poly){
+          return poly.map(function(line){return mapLineString(line)})
+        }
+
+        function mapLineString(line){
+          return line.map(function(d){return [d[1],d[0]]})
+        }
+
+        function getLineColor(feature, layer) {
+          console.log(layer.feature)
+          return layer.feature.properties.mode == 'TRANSIT'    ?    '#000000':
+          layer.feature.properties.mode == 'WALK'     ?   '#A14296':
+          layer.feature.properties.mode == 'BUS'     ?   '#48C1B1':
+          layer.feature.properties.mode == 'RAIL'     ?   '#4D7BC5':
+          layer.feature.properties.mode == 'CAR'     ?   '#E825D6':
+          layer.feature.properties.mode == 'BICYCLE'     ?   '#4AA6C3':
+          '#4AA6C3';
+        };
+
+        function polyPopUp(feature, layer) {
+          layer.bindPopup( "<b>Origin: </b>"
+          + feature.properties.name + "<br>"
+          + "<b>Time: </b>"
+          + (feature.properties.time/60)
+          + " mins");
+        }
+
+        function jobCentrePopUp(feature, layer) {
+          layer.bindPopup( "<b>Name: </b>"
+          + feature.properties.jobcentre_office + "<br>"
+          + "<b>ID: </b>"
+          + feature.properties.name + "<br>"
+          + "<b>Address: </b>"
+          + feature.properties.office_address + ", "
+          + feature.properties.postcode);
+        }
+
+        function sportsStadiumPopUp(feature, layer) {
+          layer.bindPopup( "<b>Name: </b>"
+          + feature.properties.name + "<br>"
+          + "<b>Capacity: </b>"
+          + feature.properties.capacity);
+        }
+
+        function originPopUp(feature, layer) {
+          layer.bindPopup( "<b>Name: </b>"
+          + feature.properties.name);
+        }
+
+        function lsoaPopUp(feature, layer) {
+          layer.bindPopup("<b>Name: </b>" + feature.properties.lsoa11nm + "<br>"
+          + "<b>CD: </b>" + feature.properties.lsoa11cd + "<br>"
+          + "<b>ID: </b>" + feature.properties.objectid + "<br>"
+          + "<b>Population: </b>" + feature.properties.population);
+        }
+
+        function pointToPointPopup(feature, layer) {
+          layer.bindPopup("<b>Mode: </b>" + feature.properties.mode + "<br>"
+          + "<b>Route: </b>" + feature.properties.route + "<br>"
+          + "<b>Agency: </b>" + feature.properties.agencyName + "<br>"
+          + "<b>Distance: </b>" + (feature.properties.distance/1000).toFixed(2) + " km" + "<br>"
+          + "<b>Duration: </b>" + (feature.properties.duration/60).toFixed(2) + " mins");
+        }
+
+    </script>
+
+  </div>
+
+
+  <footer>
+
+    <div class="text">This is a demonstration of some of the outputs <br> made using <a style="color: #f4427a; text-decoration:none" href="https://github.com/datasciencecampus/access-to-services/tree/develop/propeR">propeR</a>, developed and designed <br> by the <a style="color: #1459c9; text-decoration:none" href="https://datasciencecampus.ons.gov.uk/">Data Science Campus</a></div>
+
+    <img id="footerimg" src="images/propeR_logo_v1.png" alt="propeR">
+    <img id="footerimg" src="images/data-campus-logo.png" alt="Data Science Campus">
+    <img id="footerimg" src="images/ONS-logo.png" alt="Office for National Statistics">
+
+  </footer>
 
 </body>
 </html>

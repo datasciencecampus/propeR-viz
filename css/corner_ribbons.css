@@ -59,6 +59,7 @@ h2{
 
 .corner-ribbon.sticky{
   position: fixed;
+  z-index: 999;
 }
 
 .corner-ribbon.shadow{
