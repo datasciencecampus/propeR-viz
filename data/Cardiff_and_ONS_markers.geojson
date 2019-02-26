@@ -9,7 +9,7 @@
       },
       "properties": {
         "name": "Office for National Statistics",
-        "journey": "start"
+        "journey": "origin"
       }
     },
     {
@@ -20,7 +20,7 @@
       },
       "properties": {
         "name": "Cardiff City Centre",
-        "journey": "end"
+        "journey": "destination"
       }
     }
   ]

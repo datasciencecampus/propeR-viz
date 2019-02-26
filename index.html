@@ -8,48 +8,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="css/corner_ribbons.css">
   <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
+  <link rel="stylesheet" href="css/map-style.css">
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-
-  <style>
-
-  footer {
-    position: fixed;
-    padding-left: 20px;
-    padding-top: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    height: 10%;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: white;
-    font-family: "Palatino";
-    color: #333;
-    text-align: right;
-  }
-
-  #map {
-    position: absolute;
-    height: 90%;
-    width: 100%;
-    background-color: white;
-  }
-
-  .text {
-    display: inline-block;
-    vertical-align: middle; /* or top or bottom */
-  }
-
-  #footerimg {
-    display: inline-block;
-    vertical-align: middle;
-    height: 90%;
-    padding-left: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  </style>
 
 </head>
 <body>
@@ -61,10 +21,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.js"></script>
     <script type='text/javascript' src="js/L.Control.Layers.Tree.js"></script>
+    <script type='text/javascript' src="js/map-js.js"></script>
 
     <!-- <script src="js/leaflet.select-layers.min.js"></script> -->
 
     <script>
+
+    var pinIcon = L.icon({
+    iconUrl: 'images/map-marker.png',
+    iconSize:     [38, 38], // size of the icon
+    iconAnchor:   [19, 38], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+
+    var pinIcon_large = L.icon({
+    iconUrl: 'images/map-marker-select.png',
+    iconSize:     [50, 50], // size of the icon
+    iconAnchor:   [25, 50], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
 
     var data_attrib = " | Data: <a href='http://www.openstreetmap.org/'>&copy; OpenStreetMap </a>contributers | <a href='http://d3js.org/'>D3.js</a>"
     var osm_bw = L.tileLayer('https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
@@ -80,15 +55,14 @@
       subdomains: 'abcd',
       maxZoom: 19});
 
-
-
     lsoa_wales_points = new L.GeoJSON.AJAX("data/LSOA_Wales.geojson", {
       pointToLayer: function (feature, latlng) {
         return L.circle(latlng,
           radius = 500, {
             color: 'black',
             fillColor: 'white',
-            weight:'1',
+            weight:'0.1',
+            opacity: '0.8',
             fillOpacity:'1'
           })
         },
@@ -101,7 +75,8 @@
             radius = 50, {
               color: 'black',
               fillColor: 'white',
-              weight:'1',
+              weight: '0.1',
+              opacity: '0.8',
               fillOpacity:'1'
             })
           },
@@ -109,42 +84,63 @@
         });
 
         jc_points = new L.GeoJSON.AJAX("data/Wales_job_centre_locations.geojson", {
-          onEachFeature: jobCentrePopUp
-        });
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng,
+              {
+                icon: pinIcon
+              })
+          },
+          onEachFeature: jobCentrePopUp,
 
+        });
 
         jc_polygons = new L.GeoJSON.AJAX("data/Wales_job_centre_poly.geojson", {
           style: {
-            "color": '#006c84',
-            "weight": 0,
+            "color": "white",
+            "fillColor": '#006c84',
+            "weight": 1,
             "opacity":0.5
           },
           onEachFeature: polyPopUp
         });
 
         sports_stadiums = new L.GeoJSON.AJAX("data/Wales_sports_stadiums.geojson", {
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng,
+              {
+                icon: pinIcon
+              })
+          },
           onEachFeature: sportsStadiumPopUp
         });
 
 
         sports_stadiums_polygons = new L.GeoJSON.AJAX("data/Wales_sports_stadiums_poly.geojson", {
           style: {
-            "color": '#007a72',
-            "weight": 0,
+            "color": "white",
+            "fillColor": '#007a72',
+            "weight": 1,
             "opacity":0.5
           },
           onEachFeature: polyPopUp
         });
 
         manchester_points = new L.GeoJSON.AJAX("data/Manchester_centre.geojson", {
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng,
+              {
+                icon: pinIcon
+              })
+          },
           onEachFeature: originPopUp
         });
 
 
         manchester_polygons1 = new L.GeoJSON.AJAX("data/Manchester_fri_6pm_poly.geojson", {
           style: {
-            "color": '#007a72',
-            "weight": 0,
+            "color": 'white',
+            "fillColor": '#007a72',
+            "weight": 1,
             "opacity":0.5
           },
           onEachFeature: polyPopUp
@@ -152,8 +148,9 @@
 
         manchester_polygons2 = new L.GeoJSON.AJAX("data/Manchester_fri_10pm_poly.geojson", {
           style: {
-            "color": '#007a45',
-            "weight": 0,
+            "color": 'white',
+            "fillColor": '#007a45',
+            "weight": 1,
             "opacity":0.5
           },
           onEachFeature: polyPopUp
@@ -161,14 +158,21 @@
 
         manchester_polygons3 = new L.GeoJSON.AJAX("data/Manchester_sat_2am_poly.geojson", {
           style: {
-            "color": '#65007a',
-            "weight": 0,
+            "color": 'white',
+            "fillColor": '#65007a',
+            "weight": 1,
             "opacity":0.5
           },
           onEachFeature: polyPopUp
         });
 
         ons_to_cardiff_markers = new L.GeoJSON.AJAX("data/Cardiff_and_ONS_markers.geojson", {
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng,
+              {
+                icon: pinIcon
+              })
+          },
           onEachFeature: originPopUp
         });
 
@@ -262,74 +266,6 @@
 
         control.addTo(map).collapseTree().expandSelected(true);
         control.setOverlayTree(overlayTree).collapseTree(true).expandSelected(true);
-
-        function mapPoint(point){
-          return [point[1],point[0]]
-        }
-
-        function mapPolygon(poly){
-          return poly.map(function(line){return mapLineString(line)})
-        }
-
-        function mapLineString(line){
-          return line.map(function(d){return [d[1],d[0]]})
-        }
-
-        function getLineColor(feature, layer) {
-          console.log(layer.feature)
-          return layer.feature.properties.mode == 'TRANSIT'    ?    '#000000':
-          layer.feature.properties.mode == 'WALK'     ?   '#A14296':
-          layer.feature.properties.mode == 'BUS'     ?   '#48C1B1':
-          layer.feature.properties.mode == 'RAIL'     ?   '#4D7BC5':
-          layer.feature.properties.mode == 'CAR'     ?   '#E825D6':
-          layer.feature.properties.mode == 'BICYCLE'     ?   '#4AA6C3':
-          '#4AA6C3';
-        };
-
-        function polyPopUp(feature, layer) {
-          layer.bindPopup( "<b>Origin: </b>"
-          + feature.properties.name + "<br>"
-          + "<b>Time: </b>"
-          + (feature.properties.time/60)
-          + " mins");
-        }
-
-        function jobCentrePopUp(feature, layer) {
-          layer.bindPopup( "<b>Name: </b>"
-          + feature.properties.jobcentre_office + "<br>"
-          + "<b>ID: </b>"
-          + feature.properties.name + "<br>"
-          + "<b>Address: </b>"
-          + feature.properties.office_address + ", "
-          + feature.properties.postcode);
-        }
-
-        function sportsStadiumPopUp(feature, layer) {
-          layer.bindPopup( "<b>Name: </b>"
-          + feature.properties.name + "<br>"
-          + "<b>Capacity: </b>"
-          + feature.properties.capacity);
-        }
-
-        function originPopUp(feature, layer) {
-          layer.bindPopup( "<b>Name: </b>"
-          + feature.properties.name);
-        }
-
-        function lsoaPopUp(feature, layer) {
-          layer.bindPopup("<b>Name: </b>" + feature.properties.lsoa11nm + "<br>"
-          + "<b>CD: </b>" + feature.properties.lsoa11cd + "<br>"
-          + "<b>ID: </b>" + feature.properties.objectid + "<br>"
-          + "<b>Population: </b>" + feature.properties.population);
-        }
-
-        function pointToPointPopup(feature, layer) {
-          layer.bindPopup("<b>Mode: </b>" + feature.properties.mode + "<br>"
-          + "<b>Route: </b>" + feature.properties.route + "<br>"
-          + "<b>Agency: </b>" + feature.properties.agencyName + "<br>"
-          + "<b>Distance: </b>" + (feature.properties.distance/1000).toFixed(2) + " km" + "<br>"
-          + "<b>Duration: </b>" + (feature.properties.duration/60).toFixed(2) + " mins");
-        }
 
     </script>
 
