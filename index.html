@@ -61,7 +61,7 @@
           radius = 500, {
             color: 'black',
             fillColor: 'white',
-            weight:'0.1',
+            weight:'0.5',
             opacity: '0.8',
             fillOpacity:'1'
           })
@@ -75,7 +75,7 @@
             radius = 50, {
               color: 'black',
               fillColor: 'white',
-              weight: '0.1',
+              weight: '0.5',
               opacity: '0.8',
               fillOpacity:'1'
             })
@@ -114,6 +114,106 @@
           onEachFeature: sportsStadiumPopUp
         });
 
+        cardiff = new L.GeoJSON.AJAX("data/Cardiff_centre.geojson", {
+          style: {
+            "color": "white",
+            "fillColor": '#007a72',
+            "weight": 1,
+            "opacity":0.5
+          },
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng,
+              {
+                icon: pinIcon
+              })
+          },
+          onEachFeature: polyPopUpCardiff
+        });
+
+        function polyPopUpCardiff(feature, layer) {
+
+          layer.bindPopup( "<b>Origin: </b>"
+          + feature.properties.name + "<br>"
+          + "<b>Time: </b>"
+          + (feature.properties.time/60)
+          + " mins");
+
+          layer.on("mouseover.circle",function(e){
+
+              highlightLayer = e.target;
+              if (e.target.feature.geometry.type === 'Point') {
+                highlightLayer.setIcon(pinIcon_large)
+
+                for (i in e.target._eventParents) {
+
+                  for (n in e.target._eventParents[i]._layers) {
+
+                    // console.log(e.target._eventParents[i]._layers[n])
+                    if (e.target._eventParents[i]._layers[n].feature.properties.name == e.target.feature.properties.name) {
+                      highlightLayer2 = e.target._eventParents[i]._layers[n];
+                      highlightLayer2.setStyle({
+                          "fillColor": "yellow",
+                          "opacity": "1",
+                          "weight": "2",
+                          "color": "black"
+                        });
+                    }
+                  }
+                 }
+              } else {
+                highlightLayer.setStyle({
+                    "fillColor": "yellow",
+                    "opacity": "1",
+                    "weight": "2",
+                    "color": "black"
+                  }), highlightLayer.bringtoFront();
+              }
+            })
+
+            layer.on("mouseout.circle",function(e){
+
+                highlightLayer = e.target;
+
+                if (e.target.feature.geometry.type === 'Point') {
+                  highlightLayer.setIcon(pinIcon)
+                  for (i in e.target._eventParents) {
+                    for (n in e.target._eventParents[i]._layers) {
+                      // console.log(e.target._eventParents[i]._layers[n])
+                      if (e.target._eventParents[i]._layers[n].feature.properties.name == e.target.feature.properties.name) {
+                        highlightLayer2 = e.target._eventParents[i]._layers[n];
+                        console.log(fillColorOrig)
+                        highlightLayer2.setStyle({
+                          "color": "white",
+                          "fillColor": '#007a72',
+                          "weight": "1",
+                          "opacity": "0.5"
+                          });
+                      }
+                    }
+                   }
+                } else {
+                  highlightLayer.setStyle({
+                    "color": "white",
+                    "fillColor": '#007a72',
+                    "weight": "1",
+                    "opacity": "0.5"
+                    });
+                }
+              })
+        }
+
+
+        function do_something() {
+          layer.setIcon(pinIcon_large)
+        }
+
+        function do_something_else() {
+          this.setStyle({
+            "fillColor": "yellow",
+            "opacity": "1",
+            "color": "black"
+          })
+        }
 
         sports_stadiums_polygons = new L.GeoJSON.AJAX("data/Wales_sports_stadiums_poly.geojson", {
           style: {
@@ -201,7 +301,7 @@
         var map = L.map('map', {
           center: [52.5, -4],
           zoom: 8,
-          layers: [CartoDB_LightMatter]
+          layers: [CartoDB_LightMatter, cardiff]
         });
 
         var baseLayers = {
